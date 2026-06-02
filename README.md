@@ -10,19 +10,31 @@ Single file, stdlib-only Python 3.8+, SQLite-backed. No daemon to run.
 
 ## Install
 
-It's a single stdlib-only file (Python 3.8+), so installing is just downloading it.
+It's a single stdlib-only file (Python 3.8+). Two steps: get the command, then
+wire it into Claude Code.
+
+### Step 1 — get the `mutexcc` command
 
 ```sh
-# one-line installer — drops `mutexcc` onto ~/.local/bin
 curl -fsSL https://raw.githubusercontent.com/AbhinavMir/mutex-claude-code/main/install.sh | sh
-
-# or just grab the one file and run it
-curl -fsSL https://raw.githubusercontent.com/AbhinavMir/mutex-claude-code/main/mutexcc.py \
-  -o mutexcc && chmod +x mutexcc && ./mutexcc status
 ```
 
-Either gives you a `mutexcc` command. Then `cd` into a repo and run
-`mutexcc install-hooks`.
+This downloads the file to `~/.local/bin/mutexcc` so you can run `mutexcc` from
+anywhere. (If `~/.local/bin` isn't on your `PATH`, the installer tells you the
+one line to add to your shell config.) Verify with `mutexcc status` → it should
+print `no locks held`.
+
+### Step 2 — install it into Claude Code
+
+```sh
+cd /path/to/your-repo     # the repo you want protected
+mutexcc install-hooks     # add --scope user to protect ALL repos instead
+```
+
+That writes `.claude/settings.json` with `PreToolUse`/`PostToolUse` hooks. From
+then on, any Claude Code agent that edits a file in this repo automatically
+waits for the lock — nothing else to configure. To undo it, delete those two
+hook entries from `.claude/settings.json`.
 
 ## Does Claude Code already do this?
 
