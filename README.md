@@ -21,8 +21,7 @@ curl -fsSL https://raw.githubusercontent.com/AbhinavMir/mutex-claude-code/main/i
 
 This downloads the file to `~/.local/bin/mutexcc` so you can run `mutexcc` from
 anywhere. (If `~/.local/bin` isn't on your `PATH`, the installer tells you the
-one line to add to your shell config.) Verify with `mutexcc status` → it should
-print `no locks held`.
+one line to add to your shell config.)
 
 ### Step 2 — install it into Claude Code
 
