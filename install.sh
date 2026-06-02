@@ -1,11 +1,11 @@
 #!/usr/bin/env sh
 # mutexcc one-line installer — drops the single-file CLI onto your PATH.
 # Usage:
-#   curl -fsSL https://raw.githubusercontent.com/august/mutexcc/main/install.sh | sh
+#   curl -fsSL https://raw.githubusercontent.com/AbhinavMir/mutex-claude-code/main/install.sh | sh
 # Override the install dir with PREFIX=/somewhere ... | sh
 set -e
 
-REPO_RAW="${MUTEXCC_RAW:-https://raw.githubusercontent.com/august/mutexcc/main/mutexcc.py}"
+REPO_RAW="${MUTEXCC_RAW:-https://raw.githubusercontent.com/AbhinavMir/mutex-claude-code/main/mutexcc.py}"
 PREFIX="${PREFIX:-$HOME/.local/bin}"
 DEST="$PREFIX/mutexcc"
 

@@ -19,7 +19,7 @@ classifiers = [
 dependencies = []  # stdlib only, on purpose
 
 [project.urls]
-Homepage = "https://github.com/august/mutexcc"
+Homepage = "https://github.com/AbhinavMir/mutex-claude-code"
 
 [project.scripts]
 mutexcc = "mutexcc:main"

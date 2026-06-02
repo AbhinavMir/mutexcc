@@ -10,26 +10,31 @@ Single file, stdlib-only Python 3.8+, SQLite-backed. No daemon to run.
 
 ## Install
 
-Pick whichever you like — it's a single stdlib-only file, so all routes are light:
+It's a single stdlib-only file, so installing is light.
+
+**Works today (straight from the repo):**
 
 ```sh
-# pipx — isolated, recommended
-pipx install mutexcc
-
-# uvx — run without installing
-uvx mutexcc status
-
-# pip
-pip install mutexcc
-
-# no Python packaging at all — drop the file on your PATH
-curl -fsSL https://raw.githubusercontent.com/august/mutexcc/main/install.sh | sh
+# one-line installer — drops `mutexcc` onto ~/.local/bin
+curl -fsSL https://raw.githubusercontent.com/AbhinavMir/mutex-claude-code/main/install.sh | sh
 
 # or just grab the one file and run it
-curl -fsSL .../mutexcc.py -o mutexcc && chmod +x mutexcc && ./mutexcc status
+curl -fsSL https://raw.githubusercontent.com/AbhinavMir/mutex-claude-code/main/mutexcc.py \
+  -o mutexcc && chmod +x mutexcc && ./mutexcc status
+
+# or install the checkout with pip
+git clone https://github.com/AbhinavMir/mutex-claude-code && pip install ./mutex-claude-code
 ```
 
-All of them give you a `mutexcc` command. Then `cd` into a repo and run
+**Once published to PyPI** (`python3 -m build && twine upload dist/*`):
+
+```sh
+pipx install mutexcc     # isolated, recommended
+uvx mutexcc status       # run without installing
+pip install mutexcc
+```
+
+Any route gives you a `mutexcc` command. Then `cd` into a repo and run
 `mutexcc install-hooks`.
 
 ## Does Claude Code already do this?
