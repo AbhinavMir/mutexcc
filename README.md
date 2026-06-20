@@ -58,7 +58,7 @@ nobody waits, and you still have to merge. `mutexcc` provides actual waiting.
 ### 1. Hooks — automatic & enforced (recommended)
 
 ```sh
-./mutexcc install-hooks --scope project   # writes .claude/settings.json
+mutexcc install-hooks --scope project     # writes .claude/settings.json
 ```
 
 This wires a **`PreToolUse`** hook on `Edit|Write|MultiEdit|NotebookEdit` that
@@ -75,7 +75,7 @@ TTL, so the agent has a concrete ETA rather than spinning.
 ### 2. MCP server — cooperative
 
 ```sh
-claude mcp add mutexcc -- "$PWD/mutexcc" mcp
+claude mcp add mutexcc -- mutexcc mcp
 ```
 
 Exposes `acquire_lock`, `release_lock`, `check_lock`, `list_locks` so an agent
