@@ -395,6 +395,10 @@ def mcp_serve():
             req = json.loads(line)
         except Exception:
             continue
+        if not isinstance(req, dict):
+            send({"jsonrpc": "2.0", "id": None,
+                  "error": {"code": -32600, "message": "invalid request"}})
+            continue
         rid = req.get("id")
         method = req.get("method")
         try:
