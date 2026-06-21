@@ -554,6 +554,8 @@ def main():
             sys.exit(1)
 
     elif args.cmd == "release":
+        if not args.all and not args.path:
+            pr.error("release requires a path unless --all is used")
         res = release(args.path, agent_id(args.agent), all_for_agent=args.all)
         emit(res, "released %d lock(s)" % res["released"])
 
