@@ -196,7 +196,8 @@ def release(path, agent, all_for_agent=False):
     cur = conn.execute(
         "DELETE FROM locks WHERE path=? AND agent=?", (path, agent)
     )
-    return {"ok": True, "released": cur.rowcount, "path": path, "agent": agent}
+    released = cur.rowcount
+    return {"ok": released > 0, "released": released, "path": path, "agent": agent}
 
 
 def list_locks():
